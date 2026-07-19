@@ -1,0 +1,478 @@
+/* style.css - Custom stylesheet implementing the Voltage Grid design system rules */
+
+/* Custom Typography & Google Fonts import is done in index.html */
+
+/* Core Variables mapped to Voltage Grid design tokens */
+:root {
+  --surface-dim: #051424;
+  --surface-container-lowest: #010f1f;
+  --surface-container-low: #0d1c2d;
+  --surface-container: #122131;
+  --surface-container-high: #1c2b3c;
+  --surface-container-highest: #273647;
+  --on-surface: #d4e4fa;
+  --on-surface-variant: #b9cbb9;
+  --primary-container: #00ff87; /* Electric Green */
+  --primary: #f1ffef;
+  --on-primary-container: #007138;
+  --error: #ff4b4b;
+  --outline: #849585;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Hide scrollbars for container with class 'no-scrollbar' */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Material Symbols configuration */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  display: inline-block;
+  vertical-align: middle;
+}
+.material-symbols-fill {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Glassmorphism Cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(0, 255, 135, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Modal and Floating glass with high blur and subtle electric green inner glow */
+.glass-modal {
+  background: rgba(18, 33, 49, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 255, 135, 0.15);
+  box-shadow: inset 0 0 15px rgba(0, 255, 135, 0.05), 0 20px 50px rgba(1, 15, 31, 0.5);
+}
+
+/* Specular border highlights */
+.border-specular {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Input Fields styling */
+.glass-input {
+  background-color: rgba(255, 255, 255, 0.04) !important;
+  color: #d4e4fa !important;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+}
+.glass-input:focus {
+  border-color: var(--primary-container) !important;
+  box-shadow: 0 0 12px rgba(0, 255, 135, 0.2) !important;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.07) !important;
+}
+
+/* Prevent browser autofill white background override */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: #d4e4fa !important;
+  transition: background-color 5000s ease-in-out 0s;
+  box-shadow: inset 0 0 20px 20px #122131 !important;
+}
+
+/* Role select cards */
+.role-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.role-card.active {
+  border-color: var(--primary-container);
+  background: rgba(0, 255, 135, 0.06);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 255, 135, 0.1);
+}
+
+/* Glowing effects and backlit design styles */
+.map-glow {
+  box-shadow: 0 0 15px rgba(0, 255, 135, 0.4);
+}
+
+.glow-hover:hover {
+  box-shadow: 0 0 20px rgba(0, 255, 135, 0.4);
+}
+
+.primary-glow:hover {
+  box-shadow: 0 0 15px rgba(0, 255, 135, 0.4);
+}
+
+.success-glow {
+  filter: drop-shadow(0 0 20px rgba(0, 255, 135, 0.4));
+}
+
+/* Pulse Glow Keyframes for Map Pins and Active borders */
+.pulse-glow {
+  animation: pulse 2s infinite ease-in-out;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+    box-shadow: 0 0 0 0 rgba(0, 255, 135, 0.7);
+  }
+  70% {
+    transform: scale(1.1);
+    opacity: 1;
+    box-shadow: 0 0 0 10px rgba(0, 255, 135, 0);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+    box-shadow: 0 0 0 0 rgba(0, 255, 135, 0);
+  }
+}
+
+/* Breathing animation for detail map pins */
+.breathing-glow {
+  animation: breathing 3s ease-in-out infinite;
+}
+@keyframes breathing {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.25);
+  }
+}
+
+/* Pulse animation for active card borders */
+.active-pulse {
+  animation: pulse-border 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes pulse-border {
+  0%, 100% {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    border-color: var(--primary-container);
+    box-shadow: 0 0 15px rgba(0, 255, 135, 0.15);
+  }
+}
+
+/* Shimmer scan animation for charging cards & progress bars */
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 135, 0.2), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite linear;
+}
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.charging-scan {
+  position: relative;
+  overflow: hidden;
+}
+.charging-scan::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 135, 0.4), transparent);
+  animation: scan 2s infinite linear;
+}
+
+@keyframes scan {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(200%);
+  }
+}
+
+/* QR Code Animation Checkmark drawing */
+@keyframes drawCheck {
+  0% {
+    stroke-dashoffset: 48;
+    opacity: 0;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+.animate-check {
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: drawCheck 0.8s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+/* QR Container */
+.qr-container {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 255, 135, 0.2);
+}
+
+/* Interactive SVG Map Styling */
+.map-bg-grid {
+  background-size: 40px 40px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
+
+.map-node {
+  transition: all 0.3s ease;
+}
+.map-node:hover {
+  transform: scale(1.3);
+  filter: drop-shadow(0 0 10px var(--primary-container));
+}
+.map-node.active {
+  transform: scale(1.5);
+  filter: drop-shadow(0 0 15px var(--primary-container));
+}
+
+/* Premium range input sliders styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.08);
+  height: 6px;
+  border-radius: 8px;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--primary-container);
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(0, 255, 135, 0.6);
+  transition: transform 0.1s ease;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+/* Background animated glow orbs */
+.animated-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: radial-gradient(circle at 20% 30%, rgba(0, 255, 135, 0.04) 0%, transparent 40%),
+              radial-gradient(circle at 80% 70%, rgba(0, 228, 120, 0.04) 0%, transparent 40%),
+              #051424;
+}
+
+/* Utilities */
+.text-glow {
+  text-shadow: 0 0 10px rgba(0, 255, 135, 0.5);
+}
+.border-glow-green {
+  border-color: rgba(0, 255, 135, 0.3);
+  box-shadow: 0 0 12px rgba(0, 255, 135, 0.1);
+}
+
+/* Custom Leaflet Dark Mode Configurations */
+.leaflet-container {
+  background-color: #051424 !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+/* Restyle Leaflet Zoom Controls to match Glassmorphism */
+.leaflet-control-zoom {
+  border: none !important;
+  box-shadow: none !important;
+  margin: 16px !important;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+  background: rgba(255, 255, 255, 0.03) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #d4e4fa !important;
+  border-radius: 12px !important;
+  width: 40px !important;
+  height: 40px !important;
+  line-height: 38px !important;
+  font-size: 18px !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 4px 12px rgba(1, 15, 31, 0.3) !important;
+}
+
+.leaflet-control-zoom-in:hover,
+.leaflet-control-zoom-out:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(0, 255, 135, 0.3) !important;
+  color: #00ff87 !important;
+}
+
+/* Custom Glassmorphic Leaflet Popups */
+.leaflet-popup-content-wrapper {
+  background: rgba(18, 33, 49, 0.8) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(0, 255, 135, 0.2) !important;
+  color: #d4e4fa !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 32px rgba(1, 15, 31, 0.5) !important;
+  padding: 4px !important;
+}
+
+.leaflet-popup-tip {
+  background: rgba(18, 33, 49, 0.8) !important;
+  border-left: 1px solid rgba(0, 255, 135, 0.2) !important;
+  border-bottom: 1px solid rgba(0, 255, 135, 0.2) !important;
+}
+
+.leaflet-popup-close-button {
+  color: #b9cbb9 !important;
+  top: 10px !important;
+  right: 10px !important;
+}
+.leaflet-popup-close-button:hover {
+  color: #00ff87 !important;
+}
+
+/* Leaflet Attribution styling */
+.leaflet-control-attribution {
+  background: rgba(5, 20, 36, 0.7) !important;
+  backdrop-filter: blur(4px) !important;
+  color: rgba(212, 228, 250, 0.3) !important;
+  font-size: 9px !important;
+  border-top-left-radius: 8px;
+}
+.leaflet-control-attribution a {
+  color: rgba(0, 255, 135, 0.4) !important;
+}
+
+/* Leaflet Custom Marker Icons (Status Indicators) */
+.leaflet-marker-icon {
+  background: none !important;
+  border: none !important;
+}
+
+/* Pulse animation helper for Leaflet markers */
+.custom-leaflet-marker {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* Pulsing outer ring */
+.custom-leaflet-marker::before {
+  content: '';
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  animation: marker-pulse 2s infinite ease-in-out;
+}
+
+/* Available (Green) Pulsing Ring */
+.marker-available::before {
+  background: rgba(0, 255, 135, 0.15);
+  box-shadow: 0 0 10px rgba(0, 255, 135, 0.4);
+}
+
+/* Busy (Slate) Pulsing Ring */
+.marker-busy::before {
+  background: rgba(132, 149, 133, 0.1);
+}
+
+/* User GPS Current Location Ring (Red) */
+.marker-gps::before {
+  background: rgba(239, 68, 68, 0.15);
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.5);
+  animation: gps-pulse 1.8s infinite ease-in-out;
+}
+
+/* Core Dot styling */
+.marker-core {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid #051424;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.core-available {
+  background-color: #00ff87;
+  box-shadow: 0 0 10px #00ff87;
+}
+
+.core-busy {
+  background-color: #849585;
+}
+
+.core-gps {
+  background-color: #ef4444;
+  box-shadow: 0 0 8px #ef4444;
+  border-color: #ffffff;
+  width: 8px;
+  height: 8px;
+}
+
+@keyframes marker-pulse {
+  0% { transform: scale(0.6); opacity: 0.8; }
+  70% { transform: scale(1.3); opacity: 0; }
+  100% { transform: scale(0.6); opacity: 0; }
+}
+
+@keyframes gps-pulse {
+  0% { transform: scale(0.5); opacity: 0.9; }
+  70% { transform: scale(1.4); opacity: 0; }
+  100% { transform: scale(0.5); opacity: 0; }
+}
+

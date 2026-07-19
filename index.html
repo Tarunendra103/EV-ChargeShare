@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+  <title>ChargeShare - Peer-to-Peer EV charging network</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+  
+  <!-- Material Symbols -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  
+  <!-- Tailwind CDN with plugins -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <!-- Tailwind Configuration matching designer spec -->
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-dim": "#051424",
+            "on-surface-variant": "#b9cbb9",
+            "inverse-surface": "#d4e4fa",
+            "surface-container-lowest": "#010f1f",
+            "primary": "#f1ffef",
+            "outline-variant": "#3b4b3d",
+            "tertiary-container": "#dddee7",
+            "on-secondary": "#2c3039",
+            "inverse-on-surface": "#233143",
+            "secondary-fixed-dim": "#c3c6d1",
+            "primary-container": "#00ff87", // Electric Green
+            "on-tertiary-fixed": "#191c22",
+            "surface": "#051424",
+            "surface-tint": "#00e478",
+            "on-background": "#d4e4fa",
+            "surface-container": "#122131",
+            "on-error": "#690005",
+            "tertiary-fixed": "#e1e2eb",
+            "surface-variant": "#273647",
+            "on-error-container": "#ffdad6",
+            "on-secondary-fixed-variant": "#434750",
+            "tertiary": "#fcfaff",
+            "surface-container-high": "#1c2b3c",
+            "on-secondary-container": "#b5b8c3",
+            "on-surface": "#d4e4fa",
+            "on-primary-container": "#007138",
+            "on-primary": "#003919",
+            "error-container": "#93000a",
+            "inverse-primary": "#006d36",
+            "outline": "#849585",
+            "secondary-fixed": "#dfe2ee",
+            "on-secondary-fixed": "#181c24",
+            "on-tertiary-container": "#5f6269",
+            "on-tertiary-fixed-variant": "#44474e",
+            "primary-fixed": "#60ff98",
+            "surface-container-low": "#0d1c2d",
+            "secondary-container": "#454952",
+            "tertiary-fixed-dim": "#c4c6cf",
+            "secondary": "#c3c6d1",
+            "on-primary-fixed": "#00210c",
+            "error": "#ffb4ab",
+            "primary-fixed-dim": "#00e478",
+            "on-tertiary": "#2e3037",
+            "background": "#051424",
+            "surface-container-highest": "#273647",
+            "surface-bright": "#2c3a4c",
+            "on-primary-fixed-variant": "#005227"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "3xl": "1.5rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "margin-safe": "20px",
+            "container-max": "1200px",
+            "unit": "4px",
+            "gutter-desktop": "24px",
+            "gutter-mobile": "16px"
+          },
+          fontFamily: {
+            "headline-lg": ["Geist", "sans-serif"],
+            "display-lg": ["Geist", "sans-serif"],
+            "label-sm": ["JetBrains Mono", "monospace"],
+            "label-md": ["JetBrains Mono", "monospace"],
+            "headline-lg-mobile": ["Geist", "sans-serif"],
+            "body-md": ["Inter", "sans-serif"],
+            "body-lg": ["Inter", "sans-serif"]
+          },
+          fontSize: {
+            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+            "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+            "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Leaflet Maps API -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <!-- Custom styles bundle -->
+  <link rel="stylesheet" href="/src/style.css"/>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen">
+
+  <!-- Ambient background graphics -->
+  <div class="animated-bg"></div>
+
+  <!-- React mounting root -->
+  <div id="root"></div>
+
+  <!-- Entry Script -->
+  <script type="module" src="/src/index.jsx"></script>
+</body>
+</html>
