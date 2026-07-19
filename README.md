@@ -370,14 +370,13 @@ If you'd like to contribute:
 
 ---
 
-# 👨‍💻 Author
+## 👨‍💻 Authors
 
-**Tarunendra Singh Parihar**
+- **Tarunendra Singh Parihar**
+  - GitHub: https://github.com/Tarunendra103
 
-- 🎓 B.Tech Computer Science & Engineering
-- 💻 Full-Stack Java Developer
-- 🌱 Passionate about Web Development, Java, Spring Boot, and Problem Solving
-
+- **Annanya Saxena**
+  - GitHub: https://github.com/Annanya2205
 ---
 
 # 📄 License
